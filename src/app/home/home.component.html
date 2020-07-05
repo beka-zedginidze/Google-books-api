@@ -1,0 +1,109 @@
+<div class="mid">
+    <div class="mid1">
+ 
+    <div class="search">
+        <div class="search1">
+            <input class="input" type="search" placeholder="Search your favourite books" #search id="search"/>
+        </div>
+        <div class="search-button">
+            <button class="button" (click)="OnSearch(search.value)">Search</button>      
+        </div>
+    </div>
+
+    <div class="container">
+        <div>
+            <h1 class="welcome">Welcome</h1>
+            <p class="container-text">Search for the books you like,<br> 
+                <br> or browse some of our favorites.</p>
+        </div>
+        <div class="container-img">
+            <img src="assets/img/person.png">
+        </div>
+
+    </div>
+<!-- HomePage books -->
+    <div class="recomended" *ngIf="onSearch1">
+        <p class="rec-for">Recomended for you</p>
+         <div class="rec-books" *ngFor="let book of books">
+            <img class="rec-books-img" [src]="book.volumeInfo.imageLinks.smallThumbnail" alt="images">
+             <ul >
+
+                <li>{{book.volumeInfo.title}}</li>
+                <li class="author">{{book.volumeInfo.authors}} | {{book.volumeInfo.publishedDate }}</li>  
+                <li>Rating  - {{book.volumeInfo.averageRating}}/5</li>
+                <li class="description">{{book.volumeInfo.description}}</li>
+                
+             </ul>        
+             <div class="add-fav-icon">
+                
+                <a  (click)="handleAddToCart()"><img src="assets/img/bookmark.png"></a>
+            </div>               
+         </div>
+
+    </div>
+<!-- Search books -->
+    <div class="recomended" *ngIf="!onSearch1">
+        <p class="rec-for">Recomended for you</p>
+         <div class="rec-books" *ngFor="let srcbook of srcBooks">
+            <img class="search-books" [src]="srcbook.volumeInfo.imageLinks.smallThumbnail" alt="images">
+             <ul >
+                <li>{{srcbook.volumeInfo.title}}</li> 
+                <li class="author">{{srcbook.volumeInfo.authors}} | {{srcbook.volumeInfo.publishedDate }}</li>  
+                <li>Rating  - {{srcbook.volumeInfo.averageRating}}/5</li>
+                <li class="description">{{srcbook.volumeInfo.description}}</li>
+                
+             </ul>                      
+         </div>
+    </div>
+<!-- /Search books -->
+
+    <br><br><br>
+    <div class="best-seller">
+        <p class="text">The New York Best Sellers</p>
+        <p>LIteral Awards</p>
+        <p>Unheard Voices</p>
+        <p>Tab Four</p>
+    </div>
+    <hr>
+    <p id="rec">Recent</p>
+<!-- Recent books -->
+    <div class="recent">
+        <div class="recent-books" *ngFor="let book of recomendedBooks">
+            <img [src]="book.volumeInfo.imageLinks.smallThumbnail" alt="images">
+             <ul >
+                <li>{{book.volumeInfo.title}}</li> 
+                <li class="author">{{book.volumeInfo.authors}} | {{book.volumeInfo.publishedDate }}</li>  
+                <li>Rating  - {{book.volumeInfo.averageRating}}/5</li>
+                
+             </ul>                      
+         </div>
+
+    </div>
+    </div>
+    
+<!-- favorites(rigth side) -->
+
+    <div class="favorites">
+    
+
+        <img  class="fav-icon" src="assets/img/favorite.png" alt="image">
+        <div class="fav">
+            <img class="lock-icon" src="assets/img/fav.png" alt="image">
+            <p class="fav-text">favorites</p>
+            <p class="fav-books-num">books</p>
+        </div>
+    
+     </div>
+     <div class="category">
+        <h4>Browse by Category</h4>
+        <ul>
+            <li>Category A -></li>
+            <li>Category B -></li>
+            <li>Category C -></li>
+            <li>Category D -></li>
+            <li>Category E -></li>
+            <li>Category F -></li>
+        </ul>
+    </div>
+    
+</div>
