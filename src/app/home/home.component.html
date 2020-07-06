@@ -28,16 +28,16 @@
             <img class="rec-books-img" [src]="book.volumeInfo.imageLinks.smallThumbnail" alt="images">
              <ul >
 
-                <li>{{book.volumeInfo.title}}</li>
+                <li class="title">{{book.volumeInfo.title}}</li>
                 <li class="author">{{book.volumeInfo.authors}} | {{book.volumeInfo.publishedDate }}</li>  
                 <li>Rating  - {{book.volumeInfo.averageRating}}/5</li>
                 <li class="description">{{book.volumeInfo.description}}</li>
                 
              </ul>        
              <div class="add-fav-icon">
-                
-                <a  (click)="handleAddToCart()"><img src="assets/img/bookmark.png"></a>
-            </div>               
+                <a (click)="addBooksToFavorites(book)" ><img class="add-fav" src="assets/img/bookmark.png"></a>
+            </div>        
+          
          </div>
 
     </div>
@@ -51,8 +51,10 @@
                 <li class="author">{{srcbook.volumeInfo.authors}} | {{srcbook.volumeInfo.publishedDate }}</li>  
                 <li>Rating  - {{srcbook.volumeInfo.averageRating}}/5</li>
                 <li class="description">{{srcbook.volumeInfo.description}}</li>
-                
-             </ul>                      
+             </ul>      
+            <div class="add-fav-icon">
+                <a (click)="addBooksToFavorites(srcbook)" ><img   class="add-fav" src="assets/img/bookmark.png"></a>
+            </div>                  
          </div>
     </div>
 <!-- /Search books -->
@@ -69,13 +71,18 @@
 <!-- Recent books -->
     <div class="recent">
         <div class="recent-books" *ngFor="let book of recomendedBooks">
-            <img [src]="book.volumeInfo.imageLinks.smallThumbnail" alt="images">
-             <ul >
+            <img class="recent-books-img" [src]="book.volumeInfo.imageLinks.smallThumbnail" alt="images">
+             <ul>
                 <li>{{book.volumeInfo.title}}</li> 
                 <li class="author">{{book.volumeInfo.authors}} | {{book.volumeInfo.publishedDate }}</li>  
                 <li>Rating  - {{book.volumeInfo.averageRating}}/5</li>
                 
-             </ul>                      
+             </ul>    
+             <div class="add-fav-icon">
+                <a (click)="addBooksToFavorites(book)"><img  class="add-fav-recent" src="assets/img/bookmark.png"></a>
+            </div>     
+  
+                           
          </div>
 
     </div>
@@ -85,12 +92,11 @@
 
     <div class="favorites">
     
-
         <img  class="fav-icon" src="assets/img/favorite.png" alt="image">
         <div class="fav">
-            <img class="lock-icon" src="assets/img/fav.png" alt="image">
+            <img src="assets/img/fav.png" class="lock-icon">
             <p class="fav-text">favorites</p>
-            <p class="fav-books-num">books</p>
+            <p class="fav-books-num">{{ numberfavBooks }} books</p>
         </div>
     
      </div>

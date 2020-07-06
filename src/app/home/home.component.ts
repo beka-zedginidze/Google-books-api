@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { MessengerService } from 'src/app/messenger.service'
+// import { MessengerService } from 'src/app/messenger.service';
+import { NavComponent } from '../nav/nav.component';
 
 @Component({
   selector: 'app-search',
@@ -10,18 +11,29 @@ import { MessengerService } from 'src/app/messenger.service'
 export class HomeComponent implements OnInit {
   recomendedBooks;
   onSearch1: boolean = true;
-  favIcon: boolean = true;
   books;
   srcBooks;
   numberfavBooks: number = 0;
   
-  
 
-  constructor(private data: DataService, private msg: MessengerService) { }
 
-  handleAddToCart() {
-    this.msg.sendMsg(this.books)
+  constructor(private data: DataService,) { }
+   
+  addBooksToFavorites(book) {
+
+    const bookExistInCart = NavComponent.bookList.find(({title}) => title === book.volumeInfo.title);
+    console.log("works")
+    if (!bookExistInCart) {
+      NavComponent.bookList.push({...book, num: 1});
+      this.numberfavBooks += 1;
+      console.log(this.numberfavBooks, "number fav books")
+      console.log(NavComponent.bookList)
+      return;
+    } 
+    bookExistInCart.num += 1;
+    
   }
+
 
   OnSearch(s) {
     this.srcBooks = this.data.SearchBooks(s)
@@ -33,26 +45,17 @@ export class HomeComponent implements OnInit {
     this.onSearch1 = false;
   }
 
-  // addFavorites() {
-  //   this.favIcon = false;
-  //   console.log("it works")
 
-  // }
-
-  numberFav() {
-    // this.numberfavBooks = this.
-
-  }
   ngOnInit() {
     this.data.SearchBooks('The Lord Of The Rings')
         .subscribe((data) => {
           this.books  = data.items;
-          console.log('ngOnInit---------------------------------', data);
+          console.log('ngOnInit', data);
         });
         this.data.SearchBooks1('THE GUARDIANS')
         .subscribe((data) => {
           this.recomendedBooks  = data.items;
-          console.log('ngOnInit---------------------------------', data);
+          console.log('ngOnInit-recent', data);
         });     
   }
 

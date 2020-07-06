@@ -1,26 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { MessengerService } from 'src/app/messenger.service'
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { NavComponent } from '../nav/nav.component';
+
 
 @Component({
   selector: 'app-favorites',
   templateUrl: './favorites.component.html',
   styleUrls: ['./favorites.component.css']
 })
-export class FavoritesComponent implements OnInit {
+export class FavoritesComponent extends NavComponent {
 
-  books = []
-  constructor(private msg: MessengerService) { }
-
-  
-  ngOnInit(): void {
-
-    this.msg.getMsg().subscribe((product: any) => {
-      console.log(product)
-      this.books.push({
-    
-      })
-
-    })
-  }
+    newLIst = NavComponent.bookList
 
 }
