@@ -119,6 +119,7 @@ input, select, textarea{
 .add-fav-recent {
     width: 20px;
     height: 30px;
+    cursor: pointer;
     
 }
 .add-fav {
@@ -126,6 +127,7 @@ input, select, textarea{
     height: 30px;
     position: relative;
     right: 70px;
+    cursor: pointer;
 
 }
   
