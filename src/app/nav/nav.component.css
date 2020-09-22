@@ -20,6 +20,7 @@ a {
 
 .menu {
     margin-top: 80px;
+    
 }
 
 .menu img {
@@ -35,4 +36,10 @@ a {
 }
 .navbar {
     width: 15%;
+}
+
+@media screen and (max-width: 1100px) {
+    .menu a {
+        display: none;
+    }    
 }
