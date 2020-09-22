@@ -11,12 +11,12 @@ a {
     background-color: #242A4B;
     border-radius: 60px 0 0 0;
     height: auto;
-    margin-top: -360px;
+    margin-top: -380px;
     min-width: 68%;
     width: 68%;
     position: relative;
-    left: 7%;
- 
+    left: 9%;
+  
 }
 
 .search {
@@ -25,6 +25,7 @@ a {
     padding: 20px;
     margin-left:  auto;
     margin-right: auto;
+    
 }
 
 .search1 { 
@@ -311,4 +312,17 @@ hr {
     margin-right: 30px;
     width: 120px;
    
+}
+@media screen and (max-width: 900px) {
+    .recomended {
+        flex-direction: column;
+        position: relative;
+        left: 40%;
+        width: 500px;
+    }
+    .recent {
+        flex-direction: column;
+        position: relative;
+        left: 40%;
+    }
 }
