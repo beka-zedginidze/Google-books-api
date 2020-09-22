@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-// import { MessengerService } from 'src/app/messenger.service';
 import { NavComponent } from '../nav/nav.component';
 
 @Component({
@@ -16,7 +15,6 @@ export class HomeComponent implements OnInit {
   numberfavBooks: number = 0;
   
 
-
   constructor(private data: DataService,) { }
    
   addBooksToFavorites(book) {
@@ -28,6 +26,7 @@ export class HomeComponent implements OnInit {
       this.numberfavBooks += 1;
       console.log(this.numberfavBooks, "number fav books")
       console.log(NavComponent.bookList)
+      alert("Add to favorite")
       return;
     } 
     bookExistInCart.num += 1;
